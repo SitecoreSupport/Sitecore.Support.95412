@@ -125,7 +125,10 @@ namespace Sitecore.Support.Shell.Framework.Commands
                         AuditFormatter.FormatItem(item)
                     });
                     Items.Publish(item);
-                    SheerResponse.Eval("window.parent.location.reload(true);");
+                    if (Context.PageMode.IsPageEditor)
+                    {
+                        SheerResponse.Eval("window.parent.location.reload(true);");
+                    }
                 }
             }
         }
